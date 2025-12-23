@@ -51,11 +51,8 @@
 ### Prerequisites
 
 ```bash
-# Required
 Python 3.10+
 pip (Python package manager)
-
-# Optional
 Docker (for containerized deployment)
 ```
 
@@ -63,8 +60,8 @@ Docker (for containerized deployment)
 
 1️⃣ **Clone the repository**
 ```bash
-git clone https://github.com/yourusername/spam-pk.git
-cd spam-pk
+git clone https://github.com/TSun-FreeFire/TSun-FF-Spam-Api.git
+cd TSun-FF-Spam-Api
 ```
 
 2️⃣ **Install dependencies**
@@ -81,21 +78,6 @@ pip install -r requirements.txt
 4️⃣ **Run the application**
 ```bash
 python app.py
-```
-
-5️⃣ **Access the interface**
-```
-Open browser: http://localhost:5000
-```
-
-### 🐳 Docker Deployment
-
-```bash
-# Build image
-docker build -t tsun-spam-api .
-
-# Run container
-docker run -p 5000:5000 tsun-spam-api
 ```
 
 ---
@@ -230,13 +212,13 @@ Create JSON files for each server region with the following format:
 ```json
 [
   {
-    "token": "your_auth_token_here_1"
+    "token": "your_jwt_token_here_1"
   },
   {
-    "token": "your_auth_token_here_2"
+    "token": "your_jwt_token_here_2"
   },
   {
-    "token": "your_auth_token_here_3"
+    "token": "your_jwt_token_here_3"
   }
 ]
 ```
@@ -367,9 +349,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **TSun Development Team**
 
-- 🌐 Website: [Your Website]
-- 📧 Email: [your.email@example.com]
-- 💼 GitHub: [@yourusername](https://github.com/yourusername)
+- 🌐 Website: tsunstudio.pw
+- 📧 Email: [tsunstudio19@gmail.com]
+- 💼 GitHub: [@saeedx302](https://github.com/saeedx302)
 
 ---
 
@@ -387,7 +369,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Made with ❤️ by TSun Development Team**
 
-[![GitHub Stars](https://img.shields.io/github/stars/yourusername/spam-pk?style=social)](https://github.com/yourusername/spam-pk/stargazers)
-[![GitHub Forks](https://img.shields.io/github/forks/yourusername/spam-pk?style=social)](https://github.com/yourusername/spam-pk/network/members)
+[![GitHub Stars](https://img.shields.io/github/stars/TSun-FreeFire/TSun-FF-Spam-Api?style=social)](https://github.com/TSun-FreeFire/TSun-FF-Spam-Api/stargazers)
+[![GitHub Forks](https://img.shields.io/github/forks/TSun-FreeFire/TSun-FF-Spam-Api?style=social)](https://github.com/TSun-FreeFire/TSun-FF-Spam-Api/network/members)
 
 </div>
