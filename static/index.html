@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.8, maximum-scale=1.0, user-scalable=yes">
+    <title>TSun SPAM API</title>
+    <meta name="description" content="High-performance friend request processing system">
+    <link rel="icon" type="image/png" href="/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+
+<body>
+    <div class="bg-mesh"></div>
+    <div class="bg-grid"></div>
+
+    <div class="container">
+        <header>
+            <div class="brand">
+                <h1>TSun <span>SPAM</span> API</h1>
+                <p>Friend Request Processing System</p>
+            </div>
+
+            <nav class="nav-tabs">
+                <button class="nav-tab active" data-tab="tester">API Tester</button>
+                <button class="nav-tab" data-tab="docs">Documentation</button>
+            </nav>
+        </header>
+
+        <main>
+            <!-- API Tester Section -->
+            <section id="tester" class="tab-content active">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Send Friend Request</h2>
+                        <p>Enter a player UID to send parallel friend requests</p>
+                    </div>
+
+                    <form id="apiForm">
+                        <div class="form-group">
+                            <label class="form-label" for="uid">Player UID</label>
+                            <input type="text" class="form-input" id="uid" placeholder="Enter player UID..."
+                                autocomplete="off" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Server Region</label>
+                            <input type="hidden" id="server" name="server" value="PK" required>
+                            <div class="server-grid" id="serverGrid">
+                                <button type="button" class="server-btn active" data-server="PK">🇵🇰<span>PK</span></button>
+                                <button type="button" class="server-btn" data-server="IND">🇮🇳<span>IND</span></button>
+                                <button type="button" class="server-btn" data-server="BR">🇧🇷<span>BR</span></button>
+                                <button type="button" class="server-btn" data-server="US">🇺🇸<span>US</span></button>
+                                <button type="button" class="server-btn" data-server="NA">🌎<span>NA</span></button>
+                                <button type="button" class="server-btn" data-server="SAC">🌎<span>SAC</span></button>
+                                <button type="button" class="server-btn" data-server="EU">🇪🇺<span>EU</span></button>
+                                <button type="button" class="server-btn" data-server="ME">🌍<span>ME</span></button>
+                                <button type="button" class="server-btn" data-server="AFR">🌍<span>AFR</span></button>
+                                <button type="button" class="server-btn" data-server="RU">🇷🇺<span>RU</span></button>
+                                <button type="button" class="server-btn" data-server="ID">🇮🇩<span>ID</span></button>
+                                <button type="button" class="server-btn" data-server="TH">🇹🇭<span>TH</span></button>
+                                <button type="button" class="server-btn" data-server="VN">🇻🇳<span>VN</span></button>
+                                <button type="button" class="server-btn" data-server="SG">🇸🇬<span>SG</span></button>
+                                <button type="button" class="server-btn" data-server="MY">🇲🇾<span>MY</span></button>
+                                <button type="button" class="server-btn" data-server="PH">🇵🇭<span>PH</span></button>
+                                <button type="button" class="server-btn" data-server="BD">🇧🇩<span>BD</span></button>
+                                <button type="button" class="server-btn" data-server="Other">🌐<span>Other</span></button>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn" id="submitBtn">
+                            Execute Request
+                        </button>
+                    </form>
+
+                    <div class="response-panel" id="responsePanel">
+                        <div class="response-summary">
+                            <div class="response-header">
+                                <h3>Response</h3>
+                                <span class="status-badge" id="statusBadge"></span>
+                            </div>
+                            
+                            <div class="response-cards" id="responseCards">
+                                <!-- Cards will be dynamically inserted here -->
+                            </div>
+
+                            <div class="raw-json-section">
+                                <button class="json-toggle" id="jsonToggle">
+                                    <span>View Raw JSON</span>
+                                    <span class="json-toggle-icon">▼</span>
+                                </button>
+                                <div class="response-body" id="responseBody">
+                                    <pre id="responseData"></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <div class="info-grid">
+                        <div class="info-card">
+                            <h4>Parallel Processing</h4>
+                            <p>Execute up to 100 simultaneous friend requests using multi-threaded architecture.</p>
+                        </div>
+                        <div class="info-card">
+                            <h4>Token Rotation</h4>
+                            <p>Automatic token management with built-in failover mechanisms for reliability.</p>
+                        </div>
+                        <div class="info-card">
+                            <h4>Real-time Stats</h4>
+                            <p>Get detailed success and failure statistics with player information.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Documentation Section -->
+            <section id="docs" class="tab-content">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>API Documentation</h2>
+                        <p>Complete reference for the SPAM API endpoints</p>
+                    </div>
+
+                    <div class="docs-content">
+                        <div class="docs-section">
+                            <h3 class="docs-title">Base URL</h3>
+                            <div class="code-block">
+                                <code>http://localhost:5000</code>
+                            </div>
+                        </div>
+
+                        <div class="docs-section">
+                            <h3 class="docs-title">Endpoint</h3>
+                            <div class="endpoint-box">
+                                <span class="method-badge">GET</span>
+                                <code>/send_request-dev</code>
+                            </div>
+                            <p class="docs-desc">Sends friend requests to a target player using multiple authentication
+                                tokens in parallel.</p>
+                        </div>
+
+                        <div class="docs-section">
+                            <h3 class="docs-title">Parameters</h3>
+                            <table class="docs-table">
+                                <thead>
+                                    <tr>
+                                        <th>Parameter</th>
+                                        <th>Type</th>
+                                        <th>Required</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>uid</code></td>
+                                        <td>string</td>
+                                        <td><span class="required-badge">Required</span></td>
+                                        <td>Target player's unique identifier</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>server</code></td>
+                                        <td>string</td>
+                                        <td><span class="required-badge">Required</span></td>
+                                        <td>Server region code (PK, IND, BR, US, etc.)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="docs-section">
+                            <h3 class="docs-title">Example Request</h3>
+                            <div class="code-block">
+                                <code>GET /send_request-dev?uid=2513698016&server=PK</code>
+                            </div>
+                        </div>
+
+                        <div class="docs-section">
+                            <h3 class="docs-title">Success Response</h3>
+                            <div class="code-block">
+                                <pre>{
+  "PlayerName": "PlayerUsername",
+  "UID": 2513698016,
+  "Server": "PK",
+  "Success": 87,
+  "Failed": 13,
+  "Status": 1
+}</pre>
+                            </div>
+                        </div>
+
+                        <div class="docs-section">
+                            <h3 class="docs-title">Response Fields</h3>
+                            <table class="docs-table">
+                                <thead>
+                                    <tr>
+                                        <th>Field</th>
+                                        <th>Type</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>PlayerName</code></td>
+                                        <td>string</td>
+                                        <td>Target player's display name</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>UID</code></td>
+                                        <td>integer</td>
+                                        <td>Confirmed player UID</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>Server</code></td>
+                                        <td>string</td>
+                                        <td>Server region code</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>Success</code></td>
+                                        <td>integer</td>
+                                        <td>Number of successful requests</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>Failed</code></td>
+                                        <td>integer</td>
+                                        <td>Number of failed requests</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>Status</code></td>
+                                        <td>integer</td>
+                                        <td>1 = Success, 2 = All failed</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="docs-section">
+                            <h3 class="docs-title">Error Responses</h3>
+                            <div class="code-block error-block">
+                                <pre>// Missing UID
+{"error": "uid required"}
+
+// Missing Server
+{"error": "server required"}
+
+// Token file not found
+{"error": "Token file not found for server: PK"}</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 TSun SPAM API</p>
+        </footer>
+    </div>
+
+    <script src="/static/main.js"></script>
+</body>
+
+</html>
